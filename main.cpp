@@ -1,28 +1,42 @@
 ﻿#include <stdio.h>
 #include <string.h>
 
-template <typename T>
-T Min(T a, T b) {
-	return a < b ? a : b;
-}
+int func(int n) {
+	if (n <= 0) {
+		return 0;
+	}
+	if (n == 1) {
+		return 100;
+	}
 
-template<>
-char* Min<char*>(char* a, char* b) {
-	static char ans[] = "数字以外は代入できません";
-	return ans;
+	return func(n - 1) + func(n - 1) * 2 - 50;
 }
 
 int main()
 {
-	int x = 5, y = 8;
-	float l = 1.5f, m = 3.8f;
-	double i = 0.8, k = 5.8;
-	char p[] = "3", q[] = "6";
+	int num = 0;
+	int ans = 0;
+	int in = 0;
 
-	printf("%d\n", Min<int>(x, y));
-	printf("%f\n", Min<float>(l, m));
-	printf("%lf\n", Min<double>(i, k));
-	printf("%s\n", Min<char*>(p, q));
+	while (true) {
+		printf("働いた時間:");
+		scanf_s("%d", &num);
+
+		ans = func(num);
+
+		printf("\n");
+		printf("一般的な賃金体系 : %d円\n", 1072 * num);
+		printf("再帰的な賃金体系 : %d円\n\n", ans);
+
+		printf("続ける : 1, 終わる : 2\n");
+		printf("選択->");
+		scanf_s("%d", &in);
+
+		if (in == 2) {
+			break;
+		}
+	} 
+
 
 	return 0;
 }
