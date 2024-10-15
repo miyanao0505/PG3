@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <Windows.h>
+#include <functional>
 
 typedef void (*PFunc)(bool*);
 
@@ -9,10 +10,8 @@ void DispResult(bool *ans) {
 	(*ans) ? printf("正解\n") : printf("不正解\n");
 }
 
-void setTimeout(PFunc p, int second, bool ans) {
+void setTimeout(int second) {
 	Sleep(second * 1000);
-
-	p(&ans);
 }
 
 /// <summary>
@@ -34,8 +33,13 @@ bool isMatch(int input, int value) {
 	return false;
 }
 
-int main()
+int main(int argc, const char *argv[])
 {
+	std::function<void(int, int)> ans = [](int input, int result) {
+		bool ans = isMatch(input, isOddOrEven(result));
+		DispResult(&ans);
+	};
+
 	// 現在時刻の情報で初期化
 	srand((unsigned int)time(NULL));
 
@@ -48,10 +52,9 @@ int main()
 	printf("->");
 	scanf_s("%d", &input);
 
-	PFunc p;
-	p = DispResult;
+	setTimeout(3);
 
-	setTimeout(p, 3, isMatch(input, isOddOrEven(result)));
+	ans(input, result);
 
 	return 0;
 }
