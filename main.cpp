@@ -1,42 +1,57 @@
 ﻿#include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+#include <Windows.h>
 
-int func(int n) {
-	if (n <= 0) {
-		return 0;
-	}
-	if (n == 1) {
-		return 100;
-	}
+typedef void (*PFunc)(bool*);
 
-	return func(n - 1) + func(n - 1) * 2 - 50;
+void DispResult(bool *ans) {
+	(*ans) ? printf("正解\n") : printf("不正解\n");
+}
+
+void setTimeout(PFunc p, int second, bool ans) {
+	Sleep(second * 1000);
+
+	p(&ans);
+}
+
+/// <summary>
+///  奇数か偶数か
+/// </summary>
+/// <param name="num">値</param>
+/// <returns>1:奇数, 2:偶数</returns>
+int isOddOrEven(int num) {
+	if (num % 2 == 1) {
+		return 1;
+	}
+	return 2;
+}
+
+bool isMatch(int input, int value) {
+	if (input == value) {
+		return true;
+	}
+	return false;
 }
 
 int main()
 {
-	int num = 0;
-	int ans = 0;
-	int in = 0;
+	// 現在時刻の情報で初期化
+	srand((unsigned int)time(NULL));
 
-	while (true) {
-		printf("働いた時間:");
-		scanf_s("%d", &num);
+	int result = rand() % 6 + 1;
+	int input = 0;
 
-		ans = func(num);
+	printf("スタート\n");
+	printf("サイコロの出目が半(奇数)か丁(偶数)か？\n");
+	printf("1：奇数, 2：偶数\n");
+	printf("->");
+	scanf_s("%d", &input);
 
-		printf("\n");
-		printf("一般的な賃金体系 : %d円\n", 1072 * num);
-		printf("再帰的な賃金体系 : %d円\n\n", ans);
+	PFunc p;
+	p = DispResult;
 
-		printf("続ける : 1, 終わる : 2\n");
-		printf("選択->");
-		scanf_s("%d", &in);
-
-		if (in == 2) {
-			break;
-		}
-	} 
-
+	setTimeout(p, 3, isMatch(input, isOddOrEven(result)));
 
 	return 0;
 }
