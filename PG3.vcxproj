@@ -129,10 +129,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="script\Enemy.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="script\Enemy.h" />
+    <ClInclude Include="script\MyTools.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
