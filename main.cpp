@@ -1,25 +1,29 @@
 #include <stdio.h>
-#include "script/Language.h"
-#include "script/Japanese.h"
-#include "script/English.h"
+#include "script/IShape.h"
+#include "script/circle.h"
+#include "script/Rectangle.h"
 
 int main()
 {
-	Language* human[2];
+	IShape* shape[2];
 
 	for (int i = 0; i < 2; i++) {
 		if (i < 1)
-			human[i] = new Japanese;
+			shape[i] = new circle;
 		else
-			human[i] = new English;
+			shape[i] = new Rectangle;
 	}
 
 	for (int i = 0; i < 2; i++) {
-		human[i]->Speak();
+		shape[i]->Size();
 	}
 
 	for (int i = 0; i < 2; i++) {
-		delete human[i];
+		shape[i]->Draw();
+	}
+
+	for (int i = 0; i < 2; i++) {
+		delete shape[i];
 	}
 
 	return 0;

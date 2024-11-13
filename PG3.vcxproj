@@ -129,15 +129,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="script\English.cpp" />
-    <ClCompile Include="script\Japanese.cpp" />
-    <ClCompile Include="script\Language.cpp" />
+    <ClCompile Include="script\circle.cpp" />
+    <ClCompile Include="script\IShape.cpp" />
+    <ClCompile Include="script\Rectangle.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="script\English.h" />
-    <ClInclude Include="script\Japanese.h" />
-    <ClInclude Include="script\Language.h" />
-    <ClInclude Include="script\MyTools.h" />
+    <ClInclude Include="script\circle.h" />
+    <ClInclude Include="script\IShape.h" />
+    <ClInclude Include="script\Rectangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
