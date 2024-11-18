@@ -1,29 +1,26 @@
 #include <stdio.h>
-#include "script/IShape.h"
-#include "script/circle.h"
-#include "script/Rectangle.h"
+#include <list>
+#include <string>
+
+using namespace std;
 
 int main()
 {
-	IShape* shape[2];
+	// ‰Šú‰»(1970”N‚ÌRèü‰wˆê——)
+	list<string> yamanoteLine{
+		"Tokyo", "Kanda", "Akihabara", "Okachimachi", "Ueno",
+		"Uguisudani", "Nippori", "Tabata", "Komagome", "Sugamo",
+		"Otsuka", "Ikebukuro", "Mejiro", "Takadanobaba", "Shin - Okubo",
+		"Shinjuku", "Yoyogi", "Harajiku", "Shibuya", "Ebisu",
+		"Meguro", "Gotanda", "Osaki", "Shinagawa", "Tamachi",
+		"Hamamatsucho", "Shimbashi", "Yurakucho"
+	};
 
-	for (int i = 0; i < 2; i++) {
-		if (i < 1)
-			shape[i] = new circle;
-		else
-			shape[i] = new Rectangle;
-	}
-
-	for (int i = 0; i < 2; i++) {
-		shape[i]->Size();
-	}
-
-	for (int i = 0; i < 2; i++) {
-		shape[i]->Draw();
-	}
-
-	for (int i = 0; i < 2; i++) {
-		delete shape[i];
+	// 1970”N‚Ì•`‰æ
+	printf("Rèü(1970”N)‚Ì‰wˆê——\n");
+	for (auto itr = yamanoteLine.begin(); itr != yamanoteLine.end(); ++itr) {
+		printf("%20s", *itr);
+		
 	}
 
 	return 0;
