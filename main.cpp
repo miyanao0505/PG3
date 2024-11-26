@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <list>
-#include <string>
 #include <iostream>
 
 using namespace std;
@@ -8,7 +7,7 @@ using namespace std;
 int main()
 {
 	// 初期化(1970年の山手線駅一覧)
-	list<string> yamanoteLine{
+	std::list<const char*> yamanoteLine = {
 		"Tokyo", "Kanda", "Akihabara", "Okachimachi", "Ueno",
 		"Uguisudani", "Nippori", "Tabata", "Komagome", "Sugamo",
 		"Otsuka", "Ikebukuro", "Mejiro", "Takadanobaba", "Shin - Okubo",
